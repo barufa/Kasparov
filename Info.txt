@@ -1,0 +1,23 @@
+Comparacion de Doubles:
+const double EPS = 1e-9;
+x == y <=> abs(x-y) < EPS
+x >  y <=> x > y + EPS
+x >= y <=> x > y - EPS
+
+Agrandar stack:
+#include <sys/resource.h>
+rlimit rl;
+getrlimit(RLIMIT_STACK, &rl);
+rl.rlim_cur=1024L*1024L*256L;//256mb
+setrlimit(RLIMIT_STACK, &rl);
+
+Limites y constantes:
+numeric_limits<Tipo>::max()
+numeric_limits<Tipo>::min()
+numeric_limits<Tipo>::epsilon()
+INT_MAX;
+INT_MIN;
+LONG_LONG_MAX;
+LONG_LONG_MIN;
+M_PI;
+M_E;
