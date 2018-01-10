@@ -4,7 +4,7 @@
 //---------------------------------------------------------------------------------------------------
 //combinations:Genera los numero combinatorios y los almacena en una matriz;
 ull C[MAXN][MAXN];
-void combinations(int maximo){//O(N)<-Ver
+void combinations(int maximo){
 	forn(i,maximo)C[i][0]=C[i][i]=1;
 	forn(i,maximo)forr(j,1,i)C[i][j]=C[i-1][j-1]+C[i-1][j];
 }
@@ -21,7 +21,7 @@ bool next_combination(unsigned int n,unsigned int k){//Genera todas las permutac
 	}
 	return false;
 }
-ull combinaciones(unsigned int sz,unsigned int k,void (*func) (unsigned int *,unsigned int)){//O(N*O(func))
+ull combinaciones(unsigned int sz,unsigned int k,void (*func) (unsigned int *,unsigned int)){//O((szCk)*O(func))
 	ull cnt=0;forn(i,sz)A[i]=i;
 	if(sz==k){
 		cnt++;
@@ -39,18 +39,18 @@ ull combinaciones(unsigned int sz,unsigned int k,void (*func) (unsigned int *,un
 //Crea las permutaciones en orden lexicografico;
 bool is[MAXN];
 ull A[MAXN];
-void int_permutaciones(unsigned int sz,unsigned int k,void (*func) (ull *,ull),ull &c,ull idx=0){//O((n-k)!)*O(func))
+void in_permutaciones(unsigned int sz,unsigned int k,void (*func) (ull *,ull),ull &c,ull idx=0){//O((n-k)!)*O(func))
 	if(idx==k){
 		c++;
 		func(A,k);
 	}else forn(i,sz)if(!is[i]){
 		is[i]=true;A[idx]=i;
-		int_permutaciones(sz,k,func,c,idx+1);
+		in_permutaciones(sz,k,func,c,idx+1);
 		is[i]=false;A[idx]=0;
 	}
 }
 ull permutaciones(unsigned int sz,unsigned int k,void (*func) (ull *,ull)){
-	ull cnt=0;int_permutaciones(sz,k,func,cnt,0);
+	ull cnt=0;in_permutaciones(sz,k,func,cnt,0);
 	return cnt;
 }
 //---------------------------------------------------------------------------------------------------

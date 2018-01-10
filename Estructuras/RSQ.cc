@@ -18,7 +18,7 @@ typedef struct RSQ{
         forn(i,sz)add(i,a[i]);
 	}
 	void update(int idx,int value){//O(log N)
-		add(idx,-sum(idx,idx)+value);
+		add(idx,-sum(idx)+value);
 	}
     int query(int l,int r){return sum(r)-sum(l-1);}//O(log N)
     void clear(void){bit.clear();}//O(1);
