@@ -41,9 +41,9 @@ ll dfs_dinic(int u,int dst,ll flow){
         if(dist[v]==dist[u]+1){
                 ll df=dfs_dinic(v,dst,min(flow,e.cap-e.f));
                 if(0<df){
-					e.f+=df,G[v][e.rev].f-=df;
-					return df;
-				}
+			e.f+=df,G[v][e.rev].f-=df;
+			return df;
+		}
         }
     }
     return 0;
